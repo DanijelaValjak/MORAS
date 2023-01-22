@@ -1,0 +1,43 @@
+class Graph
+{
+    function int f (int x)
+    {
+        return (x * x);
+    }
+
+    function void DrawGraph()
+    {
+        var int x, fx, xn, yn, sx, sy;
+        let sx = 100;
+        let sy = 50;
+
+		let xn = 10000;
+		let yn = 10000;
+
+		do Screen.drawLine(256, 0 + sy, 256, 255 - sy);
+		do Screen.drawLine(0 + sx, 128, 511 - sx, 128);
+
+
+        let x = -33;
+
+        while (x < 34)
+        {
+            let fx = Graph.f(x);
+		
+            if ((fx > -33) & (fx < 33))
+            {
+				if (~(xn = 10000) & ~(yn= 10000))
+				{
+					do Screen.drawLine(256 + xn, 128 - yn, 256 + x, (128 - fx));	
+				}
+
+				let xn = x;
+				let yn = fx;
+            }
+
+			let x = x + 1; 
+        }
+
+        return;
+    }
+}
