@@ -1,0 +1,141 @@
+class Vint
+{
+    field int capacity;
+    field Array vec;
+
+    method int pow(int n)
+    {
+        var int res, i;
+        let res = 1;
+        while (i < n)
+        {
+            let res = res * 2;
+            let i = i + 1;
+        }
+
+        return res;
+    }
+
+    method Array getVec()
+    {
+        return vec;
+    }
+
+    method void printVec()
+    {
+        var int i;
+        while(i < capacity)
+        {
+            do Output.printInt(vec[i]);
+            do Output.printString(" ");
+            let i = i + 1;
+        }
+
+        do Output.println();
+
+        return;
+    }
+
+    method int len()
+    {
+        return capacity;
+    }
+
+    constructor Vint new(int n)
+    {
+        if(n < 0)
+        {
+            let capacity = 1;
+            let vec = Array.new(1);
+            return this;
+        }
+
+        let capacity = pow(n);
+        let vec = Array.new(capacity);
+        return this;
+    }
+
+    method void set(int k, int v)
+    {
+        if ((k < capacity) & (k > -1))
+        {
+            let vec[k] = v;
+            return;
+        }
+
+        do Output.printString("Nije moguce postaviti vrijednost");
+        do Output.println();
+
+        return;
+    }
+
+    method int get(int k)
+    {  
+        if ((k < capacity) & (k > -1))
+        {
+            return vec[k];
+        }
+        
+        do Output.printString("Nije moguce postaviti vrijednost");
+        do Output.println();
+
+        return -1;   
+    }
+
+
+    function bool is_eq(Vint a, Vint b)
+    {
+        var int i;
+        
+        if (~(a.len() = b.len()))
+        {
+            return false;
+        }
+
+        while(i < a.len())
+        {
+            if (~(a.get(i) = b.get(i)))
+            {
+                return false;
+            }
+            let i = i + 1;
+        }
+
+        return true;
+
+    }   
+
+    function bool elems (Vint a, Vint b)
+    {
+        var Array A, B;
+        var int lenA, lenB, i;
+        
+        let lenA = a.len();
+        let lenB = b.len();
+
+        if (lenA = lenB)
+        {
+            let A = a.getVec();
+            let B = b.getVec();
+
+            do QuickSort.sort(A, 0, a.len() - 1);
+            do QuickSort.sort(B, 0, b.len() - 1);
+
+            while(i < lenA)
+            {
+                if (~(A[i] = B[i]))
+                {
+                    return false;
+                }
+
+                let i = i + 1;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+
+}

@@ -1,0 +1,54 @@
+class Main
+{
+    function void main()
+    {
+        var Vint A, B;
+
+        let A = Vint.new(2);
+        let B = Vint.new(3);
+        do A.printVec();
+        do B.printVec();
+        do Output.printInt(A.len());
+        do Output.printString(" ");
+        do Output.printInt(B.len());
+        do Output.println();
+
+        do A.set(0, 8);
+        do A.set(3, 2);
+        do B.set(6, 10);
+        do B.set(4, 6);
+        do A.set(100, 1);
+        do A.set(-5, 4);
+        do B.set(10, 7);
+        do B.set(25, 1);
+
+        do A.printVec();
+        do B.printVec();
+
+        do Output.printInt(A.get(10));
+        do Output.println();
+        do Output.printInt(A.get(8));
+        do Output.println();
+        do Output.printInt(A.get(-7));
+        do Output.println();
+        do Output.printInt(B.get(0));
+        do Output.println();
+        do Output.printInt(B.get(60));
+        do Output.println();
+        do Output.printInt(B.get(-77));
+        do Output.println();
+
+        if (Vint.is_eq(A, B) = false)
+        {
+            do Output.printString("Vektori nisu jednaki.");
+            do Output.println();
+        }
+
+        if (Vint.elems(A, B) = true)
+        {
+            do Output.printString("Vektori imaju jednake elemente.");
+            do Output.println();
+        }
+        return;
+    }
+}
